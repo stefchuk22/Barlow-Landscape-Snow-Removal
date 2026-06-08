@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barlow Landscape & Snow Removal — Riverton, UT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep: #1e3524;
+    --green-mid: #2d5e38;
+    --green-bright: #4a9e55;
+    --green-light: #c4ddc6;
+    --blue-dark: #1a2c3a;
+    --blue-ice: #d6e8f0;
+    --cream: #f5f2ec;
+    --cream-warm: #ede8df;
+    --cream-dark: #ddd7cc;
+    --earth: #7a5c3a;
+    --gold: #b8873a;
+    --gold-light: #e8d4a8;
+    --white: #ffffff;
+    --text-dark: #1a2028;
+    --text-mid: #364450;
+    --text-light: #64788a;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(30, 53, 36, 0.97);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo { font-family: var(--serif); font-size: 1.3rem; color: var(--gold-light); letter-spacing: 0.02em; }
+  .nav-logo span { color: var(--blue-ice); font-style: italic; }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: var(--gold); color: var(--green-deep) !important;
+    padding: 0.55rem 1.4rem; border-radius: 2px;
+    font-weight: 600 !important; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--green-deep);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 65% 45%, rgba(74,158,85,0.13) 0%, transparent 60%),
+      radial-gradient(ellipse at 15% 80%, rgba(184,135,58,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-texture {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg, transparent, transparent 80px,
+      rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px
+    );
+    pointer-events: none;
+  }
+
+  .hero-left { padding: 8rem 3rem 5rem 5rem; position: relative; z-index: 2; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .hero-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+
+  .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.05; color: var(--white); margin-bottom: 1.5rem; }
+  .hero h1 em { color: var(--green-light); font-style: italic; }
+
+  .hero-sub { font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.6); max-width: 420px; margin-bottom: 2.5rem; }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: var(--green-deep);
+    padding: 1rem 2rem; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; border-radius: 2px; letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.65); font-size: 0.9rem; text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.25); padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.6); }
+
+  /* Hero right — photo */
+  .hero-right { position: relative; height: 100vh; overflow: hidden; }
+
+  .hero-photo {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+  }
+
+  .hero-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--green-deep) 0%, rgba(30,53,36,0.25) 45%, transparent 100%);
+  }
+
+  .hero-photo-caption {
+    position: absolute; bottom: 3rem; right: 2rem;
+    background: rgba(30,53,36,0.88); backdrop-filter: blur(6px);
+    border-left: 3px solid var(--gold); padding: 1rem 1.4rem;
+  }
+  .caption-title { font-size: 0.8rem; font-weight: 600; color: var(--white); letter-spacing: 0.05em; text-transform: uppercase; }
+  .caption-sub { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 0.15rem; }
+
+  .hero-stats { position: absolute; bottom: 3rem; left: 5rem; display: flex; gap: 3rem; z-index: 2; }
+  .stat-num { font-family: var(--serif); font-size: 2.2rem; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.2rem; }
+
+  /* ── DUAL SEASON BANNER ── */
+  .season-bar {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+
+  .season-green {
+    background: var(--gold);
+    padding: 1.1rem 3rem;
+    display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+  }
+
+  .season-blue {
+    background: var(--blue-dark);
+    padding: 1.1rem 3rem;
+    display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+  }
+
+  .season-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  .season-green .season-item { color: var(--green-deep); }
+  .season-blue .season-item { color: rgba(255,255,255,0.8); }
+
+  .season-dot-g { width: 5px; height: 5px; border-radius: 50%; background: var(--green-deep); opacity: 0.4; }
+  .season-dot-b { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.4); }
+
+  /* ── SHARED SECTION STYLES ── */
+  .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-bright); margin-bottom: 0.75rem; }
+  .section-title { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.1; color: var(--green-deep); max-width: 520px; margin-bottom: 1rem; }
+  .section-sub { color: var(--text-light); font-size: 1.05rem; line-height: 1.7; max-width: 500px; margin-bottom: 3.5rem; }
+
+  /* ── SERVICES ── */
+  .services { padding: 7rem 5rem; background: var(--cream); }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px; background: var(--cream-dark); border: 1.5px solid var(--cream-dark);
+  }
+
+  .service-card {
+    background: var(--white); padding: 2.5rem 2rem;
+    cursor: default; transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 3px; background: var(--green-bright);
+    transition: width 0.35s ease;
+  }
+  .service-card:hover { background: var(--cream); }
+  .service-card:hover::after { width: 100%; }
+
+  /* winter card variant */
+  .service-card.winter::after { background: #5ba3cc; }
+
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; font-size: 1.3rem;
+  }
+
+  .service-icon.green { background: var(--green-deep); }
+  .service-icon.blue { background: var(--blue-dark); }
+
+  .service-card h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--green-deep); margin-bottom: 0.75rem; }
+  .service-card.winter h3 { color: var(--blue-dark); }
+  .service-card p { font-size: 0.9rem; line-height: 1.65; color: var(--text-light); }
+
+  .service-badge {
+    display: inline-block; font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.2rem 0.6rem; border-radius: 2px; margin-bottom: 0.9rem;
+  }
+  .service-badge.summer { background: var(--green-light); color: var(--green-deep); }
+  .service-badge.winter { background: var(--blue-ice); color: var(--blue-dark); }
+
+  /* ── IMAGE BREAK ── */
+  .img-break { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
+
+  .img-panel { position: relative; overflow: hidden; }
+
+  .img-panel-photo {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transition: transform 0.6s ease;
+  }
+  .img-panel:hover .img-panel-photo { transform: scale(1.04); }
+
+  .img-panel-overlay { position: absolute; inset: 0; }
+  .img-panel-overlay.green { background: rgba(30,53,36,0.42); }
+  .img-panel-overlay.blue { background: rgba(26,44,58,0.48); }
+
+  .img-panel-label {
+    position: absolute; bottom: 2.5rem; left: 2.5rem;
+  }
+
+  .img-season-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 0.4rem; display: block;
+  }
+
+  .img-panel-title {
+    font-family: var(--serif); font-size: 2rem; color: var(--white);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4); line-height: 1.15;
+  }
+
+  /* ── WHY US ── */
+  .why {
+    background: var(--green-deep); padding: 7rem 5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+
+  .why-left .section-title { color: var(--white); max-width: 420px; }
+  .why-left .section-sub { color: rgba(255,255,255,0.5); }
+  .why-left .section-label { color: var(--gold); }
+
+  .promise-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem; }
+
+  .promise-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .promise-num { font-family: var(--serif); font-size: 1.1rem; color: var(--gold); min-width: 28px; line-height: 1.3; }
+  .promise-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+  .promise-item p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  .why-right { display: flex; flex-direction: column; gap: 1rem; }
+
+  .highlight-box {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4px; padding: 1.75rem 2rem;
+  }
+  .highlight-box.accent { background: var(--green-mid); border-color: rgba(74,158,85,0.35); }
+  .highlight-box.winter-accent { background: var(--blue-dark); border-color: rgba(91,163,204,0.25); }
+
+  .highlight-num { font-family: var(--serif); font-size: 3rem; color: var(--gold-light); line-height: 1; margin-bottom: 0.3rem; }
+  .highlight-box h4 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  .highlight-box p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* ── REVIEWS ── */
+  .reviews { padding: 7rem 5rem; background: var(--cream); }
+
+  .reviews-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+
+  .stars-display { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.5rem; }
+  .star { color: var(--gold); font-size: 1.1rem; }
+  .rating-big { font-family: var(--serif); font-size: 3.5rem; color: var(--green-deep); line-height: 1; }
+  .rating-context { font-size: 0.82rem; color: var(--text-light); margin-top: 0.25rem; }
+
+  .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  .review-card {
+    background: var(--white); border: 1px solid var(--cream-dark);
+    border-radius: 4px; padding: 2rem;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .review-card:hover { box-shadow: 0 6px 32px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .review-card.featured { background: var(--green-deep); border-color: var(--green-deep); }
+
+  .review-quote { font-family: var(--serif); font-size: 3rem; color: var(--green-light); line-height: 0.5; margin-bottom: 1rem; display: block; }
+  .review-card.featured .review-quote { color: rgba(74,158,85,0.35); }
+
+  .review-text { font-size: 0.95rem; line-height: 1.7; color: var(--text-mid); margin-bottom: 1.5rem; }
+  .review-card.featured .review-text { color: rgba(255,255,255,0.75); }
+
+  .review-footer { display: flex; align-items: center; justify-content: space-between; }
+
+  .reviewer { display: flex; align-items: center; gap: 0.75rem; }
+
+  .reviewer-avatar {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--green-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 600; color: var(--white); flex-shrink: 0;
+  }
+  .review-card.featured .reviewer-avatar { background: rgba(255,255,255,0.12); }
+
+  .reviewer-name { font-size: 0.875rem; font-weight: 600; color: var(--text-dark); }
+  .review-card.featured .reviewer-name { color: var(--white); }
+  .reviewer-meta { font-size: 0.75rem; color: var(--text-light); }
+  .review-card.featured .reviewer-meta { color: rgba(255,255,255,0.4); }
+  .review-stars span { color: var(--gold); font-size: 0.85rem; }
+
+  .google-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; font-weight: 600; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    border: 1px solid var(--cream-dark); padding: 0.4rem 0.8rem; border-radius: 2px;
+    align-self: center;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--cream-warm); padding: 7rem 5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  }
+
+  .contact-details { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-icon {
+    width: 36px; height: 36px; background: var(--green-deep); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0;
+  }
+  .contact-item-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.15rem; }
+  .contact-item-value { font-size: 0.95rem; color: var(--text-dark); font-weight: 500; }
+  .contact-item-value a { color: inherit; text-decoration: none; }
+  .contact-item-value a:hover { color: var(--green-bright); }
+
+  .contact-form { background: var(--white); padding: 2.5rem; border: 1px solid var(--cream-dark); border-radius: 4px; }
+
+  .form-title { font-family: var(--serif); font-size: 1.5rem; color: var(--green-deep); margin-bottom: 0.4rem; }
+  .form-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 2rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+  .form-group label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-light); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.7rem 0.9rem; border: 1.5px solid var(--cream-dark); border-radius: 2px;
+    font-family: var(--sans); font-size: 0.9rem; color: var(--text-dark); background: var(--cream);
+    outline: none; transition: border-color 0.2s; appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--green-bright); background: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%; padding: 1rem; background: var(--green-deep); color: var(--white);
+    border: none; font-family: var(--sans); font-size: 0.95rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase; border-radius: 2px;
+    cursor: pointer; transition: background 0.2s, transform 0.15s;
+  }
+  .form-submit:hover { background: var(--green-mid); transform: translateY(-1px); }
+  .form-submit:active { transform: translateY(0); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f1e14; padding: 3rem 5rem;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--gold-light); }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── FLOAT CTA ── */
+  .float-cta {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    background: var(--gold); color: var(--green-deep);
+    padding: 0.9rem 1.6rem; border-radius: 2px;
+    font-weight: 700; font-size: 0.875rem; text-decoration: none; letter-spacing: 0.04em;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2); transition: all 0.2s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .float-cta:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { animation: fadeUp 0.7s ease both; }
+  .hero-left > :nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > :nth-child(2) { animation-delay: 0.25s; }
+  .hero-left > :nth-child(3) { animation-delay: 0.4s; }
+  .hero-left > :nth-child(4) { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 7rem 1.5rem 4rem; }
+    .hero-stats { left: 1.5rem; bottom: 2rem; gap: 2rem; }
+    .season-bar { grid-template-columns: 1fr; }
+    .services { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .img-break { grid-template-columns: 1fr; min-height: auto; }
+    .img-panel { min-height: 260px; }
+    .why { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .reviews { padding: 4rem 1.5rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#contact" class="float-cta">📞 Free Estimate</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Barlow <span>Landscape & Snow</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get Estimate</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-texture"></div>
+
+  <div class="hero-left">
+    <p class="hero-tag">Riverton, Utah — Year-Round Service</p>
+    <h1>Beautiful yards.<br><em>Clear driveways.</em><br>Every season.</h1>
+    <p class="hero-sub">Barlow Landscape handles your sprinkler systems, lawn installations, and full landscape work in summer — and keeps your property clear all winter long.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get Your Free Estimate →</a>
+      <a href="tel:+18012541530" class="btn-ghost">☎ (801) 254-1530</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo" id="heroPhoto"></div>
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-photo-caption">
+      <div class="caption-title">Sprinkler & Landscape Installation</div>
+      <div class="caption-sub">Riverton, Utah</div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">4.3★</div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2-in-1</div>
+      <div class="stat-label">Year-Round Service</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Local</div>
+      <div class="stat-label">Riverton, UT</div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL SEASON BANNER -->
+<div class="season-bar">
+  <div class="season-green">
+    <div class="season-item">🌿 Landscape Installation</div>
+    <div class="season-dot-g"></div>
+    <div class="season-item">💧 Sprinkler Systems</div>
+    <div class="season-dot-g"></div>
+    <div class="season-item">🌱 Sod & Lawn</div>
+  </div>
+  <div class="season-blue">
+    <div class="season-item">❄️ Snow Plowing</div>
+    <div class="season-dot-b"></div>
+    <div class="season-item">🧂 Ice Removal</div>
+    <div class="season-dot-b"></div>
+    <div class="season-item">🏠 Residential & Commercial</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label">What We Do</p>
+  <h2 class="section-title">One company. Every season covered.</h2>
+  <p class="section-sub">From spring sprinkler installs to mid-winter snow removal, Barlow Landscape keeps your property looking great and functioning properly all year long.</p>
+
+  <div class="services-grid">
+    <!-- SUMMER -->
+    <div class="service-card">
+      <span class="service-badge summer">Summer Service</span>
+      <div class="service-icon green">💧</div>
+      <h3>Sprinkler System Installation</h3>
+      <p>Expert design and installation of residential irrigation systems. Great expertise putting in a sprinkling system that covers your entire yard efficiently and reliably.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="service-badge summer">Summer Service</span>
+      <div class="service-icon green">🌱</div>
+      <h3>Landscape Installation</h3>
+      <p>Full-yard landscape installation including grading, planting, and finishing. We transform bare lots and outdated yards into polished, well-designed outdoor spaces.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="service-badge summer">Summer Service</span>
+      <div class="service-icon green">🪴</div>
+      <h3>Sod & Lawn Installation</h3>
+      <p>Proper ground prep and sod installation for a healthy, level lawn. We grade and lay your lawn right the first time so it takes root and stays green.</p>
+    </div>
+
+    <!-- WINTER -->
+    <div class="service-card winter">
+      <span class="service-badge winter">Winter Service</span>
+      <div class="service-icon blue">❄️</div>
+      <h3>Snow Plowing</h3>
+      <p>Reliable residential and commercial snow plowing after every storm. We clear driveways, parking areas, and access routes so you're never stuck or snowed in.</p>
+    </div>
+
+    <div class="service-card winter">
+      <span class="service-badge winter">Winter Service</span>
+      <div class="service-icon blue">🧂</div>
+      <h3>Ice & De-Icing Services</h3>
+      <p>Salt and sand application to prevent ice buildup on walkways, driveways, and steps. Proactive treatment keeps your property safe when temperatures drop.</p>
+    </div>
+
+    <div class="service-card winter">
+      <span class="service-badge winter">Winter Service</span>
+      <div class="service-icon blue">🏢</div>
+      <h3>Seasonal Contracts</h3>
+      <p>Lock in priority snow removal service with a seasonal contract. Residential and commercial clients get reliable scheduling and first-call service all winter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE BREAK -->
+<div class="img-break">
+  <div class="img-panel">
+    <div class="img-panel-photo" id="photo1"></div>
+    <div class="img-panel-overlay green"></div>
+    <div class="img-panel-label">
+      <span class="img-season-tag">Summer · Landscape & Irrigation</span>
+      <div class="img-panel-title">Lush Lawns &<br>Reliable Sprinklers</div>
+    </div>
+  </div>
+  <div class="img-panel">
+    <div class="img-panel-photo" id="photo2"></div>
+    <div class="img-panel-overlay blue"></div>
+    <div class="img-panel-label">
+      <span class="img-season-tag">Winter · Snow Removal</span>
+      <div class="img-panel-title">Clear Driveways<br>Every Storm</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-left">
+    <p class="section-label">Why Barlow Landscape</p>
+    <h2 class="section-title">Honest work. Best job for your money.</h2>
+    <p class="section-sub">Customers describe Barlow as great to work with, excellent at customer service, and genuinely the best landscaper for the price. Here's what sets us apart.</p>
+
+    <div class="promise-list">
+      <div class="promise-item">
+        <div class="promise-num">01</div>
+        <div>
+          <h4>Year-Round Reliability</h4>
+          <p>You build one relationship with us and we handle both seasons. No scrambling for a separate snow removal company every October.</p>
+        </div>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">02</div>
+        <div>
+          <h4>Excellent Customer Service</h4>
+          <p>Responsive, easy to communicate with, and genuinely focused on doing the job right — not just getting it done fast.</p>
+        </div>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">03</div>
+        <div>
+          <h4>Sprinkler Expertise</h4>
+          <p>Real expertise putting in irrigation systems that cover your yard completely and perform season after season without constant repairs.</p>
+        </div>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">04</div>
+        <div>
+          <h4>Best Value for Your Dollar</h4>
+          <p>Fair pricing on quality work. Customers consistently say they get more than they expected for what they pay.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-right">
+    <div class="highlight-box accent">
+      <div class="highlight-num">4.3★</div>
+      <h4>Google Rated · Riverton, UT</h4>
+      <p>Consistent praise for customer service, quality work, and fair pricing from verified Riverton-area customers.</p>
+    </div>
+    <div class="highlight-box winter-accent">
+      <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">❄️</div>
+      <h4>Snow Removal — Every Storm</h4>
+      <p>Riverton winters are no joke. We show up reliably after every significant snowfall so you're clear and safe by morning.</p>
+    </div>
+    <div class="highlight-box">
+      <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">📍</div>
+      <h4>Local to Riverton</h4>
+      <p>Based at 12161 Field Downs Dr, Riverton, UT. We know this area's soil, slopes, and winters firsthand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <div>
+      <p class="section-label">Customer Reviews</p>
+      <h2 class="section-title" style="margin-bottom: 0.5rem;">What our customers say</h2>
+      <div class="stars-display">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span style="color: var(--cream-dark); font-size: 1.1rem;">★</span>
+        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 0.3rem;">4.3 on Google</span>
+      </div>
+      <p class="rating-context">6 Verified Google Reviews · Riverton, UT</p>
+    </div>
+    <div class="google-badge"><span style="font-size:1rem;">G</span> Google Reviews</div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card featured">
+      <span class="review-quote">"</span>
+      <p class="review-text">Awesome Landscaping Company! Great to work with and does the best job for your money. Highly recommend if you want quality work at a fair price.</p>
+      <div class="review-footer">
+        <div class="reviewer">
+          <div class="reviewer-avatar">D</div>
+          <div>
+            <div class="reviewer-name">David</div>
+            <div class="reviewer-meta">Local Guide · 6 reviews · 8 photos</div>
+          </div>
+        </div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote">"</span>
+      <p class="review-text">Great expertise in putting in a sprinkling system and landscape in my yard. Excellent customer service. They really know what they're doing with irrigation.</p>
+      <div class="review-footer">
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: var(--earth);">AC</div>
+          <div>
+            <div class="reviewer-name">Annie Chapman</div>
+            <div class="reviewer-meta">Local Guide · 50 reviews</div>
+          </div>
+        </div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      </div>
+    </div>
+
+    <div class="review-card" style="grid-column: 1 / -1;">
+      <span class="review-quote">"</span>
+      <p class="review-text">They did a great job! Straightforward, professional, and the results speak for themselves. Would definitely use Barlow again for landscape work.</p>
+      <div class="review-footer">
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: var(--navy, #26404f);">FD</div>
+          <div>
+            <div class="reviewer-name">Fernando Deljesus</div>
+            <div class="reviewer-meta">4 years ago</div>
+          </div>
+        </div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Ready for a beautiful yard — and a clear driveway?</h2>
+    <p class="section-sub">Request a free estimate for landscape work, sprinkler installation, or snow removal service. We'll get back to you fast.</p>
+
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-item-label">Phone</div>
+          <div class="contact-item-value"><a href="tel:+18012541530">(801) 254-1530</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-item-label">Address</div>
+          <div class="contact-item-value">12161 Field Downs Dr, Riverton, UT 84065</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-item-label">Hours</div>
+          <div class="contact-item-value">Open · Closes 5 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <div class="form-title">Request a Free Estimate</div>
+    <p class="form-sub">Landscape, sprinkler, or snow removal — we'll respond within 1 business day.</p>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Kelly">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Smith">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="(801) 555-0100">
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="you@email.com">
+    </div>
+
+    <div class="form-group">
+      <label>Service Needed</label>
+      <select>
+        <option value="">Select a service...</option>
+        <optgroup label="🌿 Landscape Services">
+          <option>Sprinkler System Installation</option>
+          <option>Full Landscape Installation</option>
+          <option>Sod & Lawn Installation</option>
+        </optgroup>
+        <optgroup label="❄️ Snow Removal">
+          <option>Residential Snow Plowing</option>
+          <option>Commercial Snow Plowing</option>
+          <option>Ice & De-Icing Treatment</option>
+          <option>Seasonal Snow Removal Contract</option>
+        </optgroup>
+        <option>Other / Not Sure</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tell us about your project</label>
+      <textarea placeholder="Property address, size, what you need, preferred timing, etc."></textarea>
+    </div>
+
+    <button class="form-submit" onclick="handleSubmit(this)">Send My Request — It's Free →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Barlow Landscape & Snow Removal</div>
+  <div class="footer-copy">© 2024 Barlow Landscape · 12161 Field Downs Dr, Riverton, UT 84065</div>
+  <div class="footer-links">
+    <a href="tel:+18012541530">(801) 254-1530</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Load real lawn photo in hero
+  document.getElementById('heroPhoto').style.backgroundImage =
+    "url('https://www.khloe.com/wp-content/uploads/2021/06/landscaping-utah-1.jpg')";
+
+  // Lawn / green image
+  document.getElementById('photo1').style.backgroundImage =
+    "url('https://basilgreenlawncare.com/wp-content/uploads/2023/06/sod-installation.jpg')";
+
+  // Snow removal image
+  document.getElementById('photo2').style.backgroundImage =
+    "url('https://www.loganutalandscaping.com/wp-content/uploads/2022/03/snow-removal-logan-utah.jpg')";
+
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Request Sent! We\'ll be in touch soon.';
+    btn.style.background = 'var(--green-mid)';
+    btn.disabled = true;
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.service-card, .review-card, .highlight-box, .promise-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
